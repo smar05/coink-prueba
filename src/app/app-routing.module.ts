@@ -24,6 +24,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: EnumPages.NUMERO_CEL,
+    loadChildren: () =>
+      import('./pages/numero-cel/numero-cel.module').then(
+        (m) => m.NumeroCelComponentModule
+      ),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
