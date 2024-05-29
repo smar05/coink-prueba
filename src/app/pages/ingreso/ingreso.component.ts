@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EnumPages } from 'src/app/enums/enum-pages';
+import { EnumVariablesGlobales } from 'src/app/enums/enum-variables-globales';
+import { VariablesGlobalesService } from 'src/app/services/variables-globales.service';
 
 @Component({
   selector: 'app-ingreso',
@@ -8,9 +10,14 @@ import { EnumPages } from 'src/app/enums/enum-pages';
   styleUrls: ['./ingreso.component.scss'],
 })
 export class IngresoComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private obser: VariablesGlobalesService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.obser.setData(EnumVariablesGlobales.SHOW_NAVBAR, false);
+  }
 
   public registro(): void {
     this.router.navigate([`/${EnumPages.NUMERO_CEL}`]);
