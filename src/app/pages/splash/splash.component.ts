@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
+import { EnumPages } from 'src/app/enums/enum-pages';
 
 @Component({
   selector: 'app-splash',
@@ -7,7 +9,11 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class SplashComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    setTimeout(() => {
+      this.router.navigate([`/${EnumPages.INGRESO}`]);
+    }, 3000);
+  }
 }
