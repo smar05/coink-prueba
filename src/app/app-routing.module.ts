@@ -15,6 +15,14 @@ const routes: Routes = [
         (m) => m.IngresoComponentModule
       ),
   },
+
+  {
+    path: EnumPages.SPLASH,
+    loadChildren: () =>
+      import('./pages/splash/splash.module').then(
+        (m) => m.SplashComponentModule
+      ),
+  },
   {
     path: '',
     redirectTo: 'home',
