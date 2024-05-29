@@ -1,0 +1,31 @@
+<nav class="navbar navbar-custom">
+  <a class="navbar-brand" href="#">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="#00FF00"
+    >
+      <polygon
+        points="15.293 3.293 6.586 12 15.293 20.707 16.707 19.293 9.414 12 16.707 4.707 15.293 3.293"
+      />
+    </svg>
+  </a>
+  <span class="navbar-text mx-auto">NÚMERO CELULAR</span>
+  <div class="container center">
+    <div class="center step-indicator">
+      <div
+        *ngFor="let item of this.steps"
+        class="step"
+        [ngClass]="{ active: this.stepActive == item }"
+      >
+        <span class="circle"></span>
+        <span
+          class="line"
+          *ngIf="item != this.steps[this.steps.length - 1]"
+        ></span>
+      </div>
+    </div>
+  </div>
+</nav>
