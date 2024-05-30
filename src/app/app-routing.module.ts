@@ -31,6 +31,11 @@ const routes: Routes = [
       ),
   },
   {
+    path: EnumPages.INFO,
+    loadChildren: () =>
+      import('./pages/info/info.module').then((m) => m.IngresoComponentModule),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

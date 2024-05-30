@@ -4,6 +4,8 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { EnumPages } from 'src/app/enums/enum-pages';
 import { EnumVariablesGlobales } from 'src/app/enums/enum-variables-globales';
 import { VariablesGlobalesService } from 'src/app/services/variables-globales.service';
 
@@ -36,7 +38,8 @@ export class NumeroCelComponent implements OnInit {
 
   constructor(
     private obser: VariablesGlobalesService,
-    private form: UntypedFormBuilder
+    private form: UntypedFormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -51,12 +54,13 @@ export class NumeroCelComponent implements OnInit {
   public tecladoClick(tecla: string): void {
     let numero: string = this.celphone.value;
 
-    if (tecla === 'delete') {
+    if (tecla === 'check') {
+      if (this.f.valid) this.router.navigate([`/${EnumPages.INFO}`]);
+    } else if (tecla === 'delete') {
       if (numero.length === 0) return;
       numero = numero.slice(0, -1);
     } else if (numero.length >= this.lengthNumero) {
       return;
-    } else if (tecla === 'check') {
     } else {
       numero += tecla;
     }
