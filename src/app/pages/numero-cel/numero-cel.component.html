@@ -14,52 +14,63 @@
     </div>
   </div>
   <div class="row line"></div>
-  <div class="input-group mb-3 justify-content-center">
+  <div class="input-group mb-3 justify-content-center" [formGroup]="f">
     <input
+      formControlName="celphone"
       type="text"
       class="form-control text-center phone-input"
       placeholder="(XXX - XXXXXX)"
       readonly
-      disabled
+      minlength="10"
+      maxlength="10"
+      [ngClass]="{
+        'is-invalid': celphone.invalid
+      }"
     />
   </div>
   <div class="num-pad mt-2">
-    <div class="row justify-content-around">
-      <div class="col-4">
+    <div class="row">
+      <div class="col-4" (click)="this.tecladoClick('1')">
         <button class="btn btn-block">1</button>
       </div>
-      <div class="col-4">
+      <div class="col-4" (click)="this.tecladoClick('2')">
         <button class="btn btn-block">2</button>
       </div>
-      <div class="col-4">
+      <div class="col-4" (click)="this.tecladoClick('3')">
         <button class="btn btn-block">3</button>
       </div>
     </div>
     <div class="row">
-      <div class="col-4">
+      <div class="col-4" (click)="this.tecladoClick('4')">
         <button class="btn btn-block">4</button>
       </div>
-      <div class="col-4">
+      <div class="col-4" (click)="this.tecladoClick('5')">
         <button class="btn btn-block">5</button>
       </div>
-      <div class="col-4">
+      <div class="col-4" (click)="this.tecladoClick('6')">
         <button class="btn btn-block">6</button>
       </div>
     </div>
     <div class="row">
       <div class="col-4">
-        <button class="btn btn-block">7</button>
+        <button class="btn btn-block" (click)="this.tecladoClick('7')">
+          7
+        </button>
       </div>
       <div class="col-4">
-        <button class="btn btn-block">8</button>
+        <button class="btn btn-block" (click)="this.tecladoClick('8')">
+          8
+        </button>
       </div>
       <div class="col-4">
-        <button class="btn btn-block">9</button>
+        <button class="btn btn-block" (click)="this.tecladoClick('9')">
+          9
+        </button>
       </div>
     </div>
     <div class="row">
       <div class="col-4">
-        <button class="btn btn-block">
+        <button class="btn btn-block" (click)="this.tecladoClick('delete')">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="50"
@@ -78,10 +89,12 @@
         </button>
       </div>
       <div class="col-4">
-        <button class="btn btn-block">0</button>
+        <button class="btn btn-block" (click)="this.tecladoClick('0')">
+          0
+        </button>
       </div>
       <div class="col-4">
-        <button class="btn btn-block">
+        <button class="btn btn-block" (click)="this.tecladoClick('check')">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="50"
@@ -89,11 +102,26 @@
             fill="#d3d3d3"
             class="bi bi-check-circle-fill"
             viewBox="0 0 16 16"
+            *ngIf="this.f.invalid; else valid"
           >
             <path
               d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
             />
           </svg>
+          <ng-template #valid>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              fill="#1eea00"
+              class="bi bi-check-circle-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+              />
+            </svg>
+          </ng-template>
         </button>
       </div>
     </div>
