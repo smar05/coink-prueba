@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NumeroCelComponent } from './numero-cel.component';
 import { NumeroCelRoutingModule } from './numero-cel-routing.module';
+import { InfoRegistroComponent } from 'src/app/components/info-registro/info-registro.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { NumeroCelRoutingModule } from './numero-cel-routing.module';
     NumeroCelRoutingModule,
     ReactiveFormsModule,
   ],
-  declarations: [NumeroCelComponent],
+  declarations: [NumeroCelComponent, InfoRegistroComponent],
 })
 export class NumeroCelComponentModule {}

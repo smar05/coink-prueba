@@ -1,19 +1,5 @@
 <div class="container">
-  <div class="row">
-    <div class="col-4">
-      <img
-        src="../../../assets/img/coink_logo_nn.png"
-        alt="Piggy"
-        class="piggy-img mb-3"
-      />
-    </div>
-    <div class="col-8 center-vertical">
-      <p class="text-start text-principal">
-        Para comenzar, por favor ingresa <strong>tu número celular.</strong>
-      </p>
-    </div>
-  </div>
-  <div class="row line"></div>
+  <app-info-registro></app-info-registro>
   <div class="input-group mb-3 justify-content-center" [formGroup]="f">
     <input
       formControlName="celphone"

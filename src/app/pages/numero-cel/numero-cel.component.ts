@@ -42,6 +42,10 @@ export class NumeroCelComponent implements OnInit {
   ngOnInit() {
     this.obser.setData(EnumVariablesGlobales.SHOW_NAVBAR, true);
     this.obser.setData(EnumVariablesGlobales.STEP_NAVBAR, 0);
+    this.obser.setData(
+      EnumVariablesGlobales.TEXTO_INFO_REGISTRO,
+      'Para comenzar, por favor ingresa <strong>tu número celular.</strong>'
+    );
   }
 
   public tecladoClick(tecla: string): void {
