@@ -12,11 +12,6 @@ html {
   height: 100%;
 }
 
-.piggy-img {
-  width: 150px;
-  height: auto;
-}
-
 .phone-input {
   width: 50%;
   font-size: 1.5rem;
@@ -56,18 +51,4 @@ html {
 .fa-backspace,
 .fa-check {
   font-size: 1.5rem;
-}
-.center-vertical {
-  display: flex;
-  align-items: center;
-}
-.text-principal {
-  color: #9b9b9b;
-  font-weight: bolder;
-}
-.line {
-  border-bottom: 3px solid #92f483;
-  width: 100%;
-  height: 10px;
-  margin-bottom: 40px;
 }
