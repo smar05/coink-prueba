@@ -10,6 +10,7 @@ import { EnumPages } from 'src/app/enums/enum-pages';
 import { EnumVariablesGlobales } from 'src/app/enums/enum-variables-globales';
 import { IFormInfo } from 'src/app/interfaces/i-form-info';
 import { ITipoDeDocumento } from 'src/app/interfaces/i-tipo-de-documento';
+import { AlertsService } from 'src/app/services/alerts.service';
 import { VariablesGlobalesService } from 'src/app/services/variables-globales.service';
 
 @Component({
@@ -137,7 +138,8 @@ export class InfoComponent implements OnInit {
     private obser: VariablesGlobalesService,
     private http: HttpClient,
     private form: UntypedFormBuilder,
-    private router: Router
+    private router: Router,
+    private alertService: AlertsService
   ) {}
 
   ngOnInit() {
@@ -167,6 +169,12 @@ export class InfoComponent implements OnInit {
           this.tiposDeDocumento = res;
         },
         (error) => {
+          this.alertService.alertBasic(
+            'Error',
+            '',
+            'Error en la consulta de los documentos',
+            ['Aceptar']
+          );
           throw new Error('Error consultado los tipos de documento');
         }
       );

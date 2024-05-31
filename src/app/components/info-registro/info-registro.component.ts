@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EnumVariablesGlobales } from 'src/app/enums/enum-variables-globales';
+import { AlertsService } from 'src/app/services/alerts.service';
 import { VariablesGlobalesService } from 'src/app/services/variables-globales.service';
 
 @Component({
@@ -16,7 +17,10 @@ export class InfoRegistroComponent implements OnInit {
     coinkPolicia: '../../../assets/img/coink_policia.png',
   };
 
-  constructor(private obser: VariablesGlobalesService) {}
+  constructor(
+    private obser: VariablesGlobalesService,
+    private alertService: AlertsService
+  ) {}
 
   ngOnInit() {
     this.obser.getData(EnumVariablesGlobales.TITLE_INFO_REGISTRO).subscribe(
@@ -25,6 +29,12 @@ export class InfoRegistroComponent implements OnInit {
       },
       (error) => {
         console.error(error);
+        this.alertService.alertBasic(
+          'Error',
+          '',
+          'No se puede asignar el titulo',
+          ['Aceptar']
+        );
         throw new Error('No se puede asignar el titulo');
       }
     );
@@ -34,6 +44,12 @@ export class InfoRegistroComponent implements OnInit {
       },
       (error) => {
         console.error(error);
+        this.alertService.alertBasic(
+          'Error',
+          '',
+          'No se puede asignar el texto',
+          ['Aceptar']
+        );
         throw new Error('No se puede asignar el texto');
       }
     );
@@ -43,6 +59,12 @@ export class InfoRegistroComponent implements OnInit {
       },
       (error) => {
         console.error(error);
+        this.alertService.alertBasic(
+          'Error',
+          '',
+          'No se puede asignar la imagen',
+          ['Aceptar']
+        );
         throw new Error('No se puede asignar la imagen');
       }
     );

@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { EnumVariablesGlobales } from 'src/app/enums/enum-variables-globales';
+import { AlertsService } from 'src/app/services/alerts.service';
 import { VariablesGlobalesService } from 'src/app/services/variables-globales.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private location: Location,
-    private obser: VariablesGlobalesService
+    private obser: VariablesGlobalesService,
+    private alertService: AlertsService
   ) {}
 
   ngOnInit() {
@@ -24,6 +26,12 @@ export class NavbarComponent implements OnInit {
       },
       (error) => {
         console.error(error);
+        this.alertService.alertBasic(
+          'Error',
+          '',
+          'No se puede asignar el step al navbar',
+          ['Aceptar']
+        );
         throw new Error('No se puede asignar el step al navbar');
       }
     );
