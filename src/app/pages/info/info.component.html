@@ -1,3 +1,104 @@
-<div class="container">
+<div class="container mt-2 mb-5">
   <app-info-registro></app-info-registro>
+
+  <h4 class="title mb-4">Documento de identidad</h4>
+  <form>
+    <div class="form-floating">
+      <select class="form-control custom-input" id="tipoDocumento">
+        <option disabled selected></option>
+        <option>Cédula de ciudadanía</option>
+        <option>Tarjeta de identidad</option>
+        <option>Pasaporte</option>
+      </select>
+      <label class="custom-label" for="tipoDocumento">Tipo de documento</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="text"
+        class="form-control custom-input"
+        id="numeroDocumento"
+        placeholder=""
+      />
+      <label class="custom-label" for="numeroDocumento"
+        >Número de documento</label
+      >
+    </div>
+    <div class="form-floating">
+      <input
+        type="date"
+        class="form-control custom-input"
+        id="fechaExpedicion"
+        placeholder=""
+      />
+      <label class="custom-label" for="fechaExpedicion"
+        >Fecha de expedicion del documento</label
+      >
+    </div>
+    <div class="form-floating">
+      <input
+        type="date"
+        class="form-control custom-input"
+        id="fechaNacimiento"
+        placeholder=""
+      />
+      <label class="custom-label" for="fechaNacimiento"
+        >Fecha de nacimiento</label
+      >
+    </div>
+    <div class="form-floating">
+      <select class="form-control custom-input" id="genero">
+        <option disabled selected></option>
+        <option>Masculino</option>
+        <option>Femenino</option>
+        <option>Otro</option>
+      </select>
+      <label class="custom-label" for="genero">Genero</label>
+    </div>
+
+    <h4 class="title mb-2 mt-4">Configura tu cuenta</h4>
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control custom-input"
+        id="correoElectronico"
+        placeholder=""
+      />
+      <label class="custom-label" for="correoElectronico"
+        >Correo electrónico</label
+      >
+    </div>
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control custom-input"
+        id="confirmarCorreo"
+        placeholder=""
+      />
+      <label class="custom-label" for="confirmarCorreo"
+        >Confirmar correo electrónico</label
+      >
+    </div>
+
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control custom-input"
+        id="pin"
+        placeholder=""
+      />
+      <label class="custom-label" for="pin">Pin de seguridad</label>
+    </div>
+
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control custom-input"
+        id="confirmarPin"
+        placeholder=""
+      />
+      <label class="custom-label" for="confirmarPin"
+        >Confirmar pin de seguridad</label
+      >
+    </div>
+  </form>
 </div>
