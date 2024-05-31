@@ -1,0 +1,36 @@
+/* styles.css */
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: block;
+}
+
+.bg {
+  background-color: #c8c8c8;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-title {
+  color: #195d53;
+  font-size: 1.3rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #9b9b9b;
+  font-weight: bolder;
+}
+
+.btn-success {
+  background-color: #00ff00;
+  border-radius: 50px;
+  font-weight: bolder;
+  color: #195d53;
+}
