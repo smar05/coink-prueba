@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  UntypedFormBuilder,
+  UntypedFormGroup,
+  Validators,
+} from '@angular/forms';
 import { EnumVariablesGlobales } from 'src/app/enums/enum-variables-globales';
 import { VariablesGlobalesService } from 'src/app/services/variables-globales.service';
 
@@ -8,7 +13,25 @@ import { VariablesGlobalesService } from 'src/app/services/variables-globales.se
   styleUrls: ['./contrato.component.scss'],
 })
 export class ContratoComponent implements OnInit {
-  constructor(private obser: VariablesGlobalesService) {}
+  //Grupo de controles
+  public f: UntypedFormGroup = this.form.group({
+    terminos: [
+      '',
+      {
+        validators: [Validators.required],
+      },
+    ],
+  });
+
+  //Validaciones personalizadas
+  get terminos() {
+    return this.f.controls['terminos'];
+  }
+
+  constructor(
+    private obser: VariablesGlobalesService,
+    private form: UntypedFormBuilder
+  ) {}
 
   ngOnInit() {
     this.asignarDatosPantalla();
@@ -25,5 +48,10 @@ export class ContratoComponent implements OnInit {
       EnumVariablesGlobales.TITLE_INFO_REGISTRO,
       'ESTAS MUY CERCA DE SER PARTE DE COINK.'
     );
+  }
+
+  public aceptar(): void {
+    console.log('🚀 ~ ContratoComponent ~ aceptar ~ this.f:', this.f);
+    if (this.f.invalid || !this.terminos.value) return;
   }
 }
