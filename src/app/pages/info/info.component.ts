@@ -156,6 +156,7 @@ export class InfoComponent implements OnInit {
       EnumVariablesGlobales.TITLE_INFO_REGISTRO,
       '¿CUÁLES SON TUS DATOS?'
     );
+    this.obser.setData(EnumVariablesGlobales.URL_IMG_INFO_REGISTRO, 'coink');
   }
 
   private consultarApi(): void {

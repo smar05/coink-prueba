@@ -10,6 +10,11 @@ import { VariablesGlobalesService } from 'src/app/services/variables-globales.se
 export class InfoRegistroComponent implements OnInit {
   public textoInfo: string = '';
   public title: string = '';
+  public urlImg: string = '';
+  private imagenes: { [key: string]: string } = {
+    coink: '../../../assets/img/coink_logo_nn.png',
+    coinkPolicia: '../../../assets/img/coink_policia.png',
+  };
 
   constructor(private obser: VariablesGlobalesService) {}
 
@@ -30,6 +35,15 @@ export class InfoRegistroComponent implements OnInit {
       (error) => {
         console.error(error);
         throw new Error('No se puede asignar el texto');
+      }
+    );
+    this.obser.getData(EnumVariablesGlobales.URL_IMG_INFO_REGISTRO).subscribe(
+      (res: string) => {
+        this.urlImg = this.imagenes[res];
+      },
+      (error) => {
+        console.error(error);
+        throw new Error('No se puede asignar la imagen');
       }
     );
   }

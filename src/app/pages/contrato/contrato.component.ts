@@ -48,6 +48,10 @@ export class ContratoComponent implements OnInit {
       EnumVariablesGlobales.TITLE_INFO_REGISTRO,
       'ESTAS MUY CERCA DE SER PARTE DE COINK.'
     );
+    this.obser.setData(
+      EnumVariablesGlobales.URL_IMG_INFO_REGISTRO,
+      'coinkPolicia'
+    );
   }
 
   public aceptar(): void {

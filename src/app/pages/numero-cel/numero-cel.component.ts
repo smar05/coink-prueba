@@ -49,6 +49,7 @@ export class NumeroCelComponent implements OnInit {
       EnumVariablesGlobales.TEXTO_INFO_REGISTRO,
       'Para comenzar, por favor ingresa <strong>tu número celular.</strong>'
     );
+    this.obser.setData(EnumVariablesGlobales.URL_IMG_INFO_REGISTRO, 'coink');
   }
 
   public tecladoClick(tecla: string): void {
