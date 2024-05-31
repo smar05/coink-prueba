@@ -43,6 +43,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: EnumPages.REGISTRO_EXITOSO,
+    loadChildren: () =>
+      import('./pages/registro-exitoso/registro-exitoso.module').then(
+        (m) => m.RegistroExitosoComponentModule
+      ),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',

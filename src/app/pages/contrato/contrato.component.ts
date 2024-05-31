@@ -4,6 +4,8 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { EnumPages } from 'src/app/enums/enum-pages';
 import { EnumVariablesGlobales } from 'src/app/enums/enum-variables-globales';
 import { VariablesGlobalesService } from 'src/app/services/variables-globales.service';
 
@@ -30,7 +32,8 @@ export class ContratoComponent implements OnInit {
 
   constructor(
     private obser: VariablesGlobalesService,
-    private form: UntypedFormBuilder
+    private form: UntypedFormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -57,5 +60,7 @@ export class ContratoComponent implements OnInit {
   public aceptar(): void {
     console.log('🚀 ~ ContratoComponent ~ aceptar ~ this.f:', this.f);
     if (this.f.invalid || !this.terminos.value) return;
+
+    this.router.navigate([`/${EnumPages.REGISTRO_EXITOSO}`]);
   }
 }

@@ -5,4 +5,5 @@ export enum EnumPages {
   NUMERO_CEL = 'numero-cel',
   INFO = 'info',
   CONTRATO = 'contrato',
+  REGISTRO_EXITOSO = 'registro-exitoso',
 }
