@@ -7,8 +7,7 @@ html {
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
   justify-content: center;
   height: 100%;
@@ -40,7 +39,6 @@ h4 {
   box-shadow: none;
   color: #9b9b9b;
   font-weight: bolder;
-  width: 18rem;
 }
 
 .custom-input:focus {
@@ -56,4 +54,11 @@ h4 {
 .title {
   color: #195d53;
   font-size: 1.3rem;
+}
+
+.btn-siguiente {
+  background-color: #00ff00;
+  border-radius: 50px;
+  font-weight: bolder;
+  color: #195d53;
 }
