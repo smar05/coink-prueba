@@ -4,4 +4,5 @@ export enum EnumPages {
   SPLASH = 'splash',
   NUMERO_CEL = 'numero-cel',
   INFO = 'info',
+  CONTRATO = 'contrato',
 }

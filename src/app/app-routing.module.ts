@@ -36,6 +36,13 @@ const routes: Routes = [
       import('./pages/info/info.module').then((m) => m.IngresoComponentModule),
   },
   {
+    path: EnumPages.CONTRATO,
+    loadChildren: () =>
+      import('./pages/contrato/contrato.module').then(
+        (m) => m.ContratoComponentModule
+      ),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
