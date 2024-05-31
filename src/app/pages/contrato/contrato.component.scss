@@ -1,0 +1,59 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+h4 {
+  font-weight: bold;
+  color: #343a40;
+}
+
+p {
+  color: #343a40;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+a {
+  display: block;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.form-check-label {
+  font-size: 1rem;
+  color: #28a745;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  font-size: 1.2rem;
+}
+
+.title {
+  color: #195d53;
+  font-size: 1.1rem;
+}
+
+.container p {
+  color: #9b9b9b;
+  font-weight: bolder;
+  font-size: 0.8rem;
+}
+
+.btn-aceptar {
+  background-color: #00ff00;
+  border-radius: 50px;
+  font-weight: bolder;
+  color: #195d53;
+}
