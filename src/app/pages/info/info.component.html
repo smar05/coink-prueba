@@ -147,7 +147,7 @@
     <button
       type="submit"
       class="btn btn-lg btn-block my-3 btn-siguiente"
-      [disabled]="this.f.invalid"
+      [disabled]="this.f.invalid || !this.validarIgualdadDatos()"
     >
       SIGUIENTE
     </button>

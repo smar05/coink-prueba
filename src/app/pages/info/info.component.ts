@@ -5,7 +5,10 @@ import {
   UntypedFormGroup,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { EnumPages } from 'src/app/enums/enum-pages';
 import { EnumVariablesGlobales } from 'src/app/enums/enum-variables-globales';
+import { IFormInfo } from 'src/app/interfaces/i-form-info';
 import { ITipoDeDocumento } from 'src/app/interfaces/i-tipo-de-documento';
 import { VariablesGlobalesService } from 'src/app/services/variables-globales.service';
 
@@ -133,7 +136,8 @@ export class InfoComponent implements OnInit {
   constructor(
     private obser: VariablesGlobalesService,
     private http: HttpClient,
-    private form: UntypedFormBuilder
+    private form: UntypedFormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -168,7 +172,30 @@ export class InfoComponent implements OnInit {
   }
 
   public clickSiguiente(): void {
-    console.log('🚀 ~ InfoComponent ~ clickSiguiente ~ this.f:', this.f);
     if (this.f.invalid) return;
+
+    let data: IFormInfo = {
+      tipoDocumento: this.tipoDocumento.value,
+      numeroDocumento: this.numeroDocumento.value,
+      fechaExpedicion: this.fechaExpedicion.value,
+      fechaNacimiento: this.fechaNacimiento.value,
+      genero: this.genero.value,
+      correoElectronico: this.correoElectronico.value,
+      confirmarCorreo: this.confirmarCorreo.value,
+      pin: this.pin.value,
+      confirmarPin: this.confirmarPin.value,
+    };
+    console.log('🚀 ~ InfoComponent ~ clickSiguiente ~ data:', data);
+
+    if (!this.validarIgualdadDatos()) return;
+
+    this.router.navigate([`/${EnumPages.CONTRATO}`]);
+  }
+
+  public validarIgualdadDatos(): boolean {
+    return (
+      this.correoElectronico.value === this.confirmarCorreo.value &&
+      this.pin.value === this.confirmarPin.value
+    );
   }
 }
