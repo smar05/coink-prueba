@@ -6,8 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { take } from 'rxjs';
 import { EnumPages } from 'src/app/enums/enum-pages';
 import { EnumVariablesGlobales } from 'src/app/enums/enum-variables-globales';
+import { IDatosRegistro } from 'src/app/interfaces/i-datos-registro';
 import { IFormInfo } from 'src/app/interfaces/i-form-info';
 import { ITipoDeDocumento } from 'src/app/interfaces/i-tipo-de-documento';
 import { AlertsService } from 'src/app/services/alerts.service';
@@ -134,6 +136,8 @@ export class InfoComponent implements OnInit {
     return this.f.controls['confirmarPin'];
   }
 
+  private datosRegistro: IDatosRegistro = null as any;
+
   constructor(
     private obser: VariablesGlobalesService,
     private http: HttpClient,
@@ -144,7 +148,34 @@ export class InfoComponent implements OnInit {
 
   ngOnInit() {
     this.asignarDatosPantalla();
+    this.consultarDatosRegistro();
     this.consultarApi();
+  }
+
+  private consultarDatosRegistro(): void {
+    this.obser
+      .getData(EnumVariablesGlobales.DATOS_REGISTRO)
+      .pipe(take(1))
+      .subscribe(
+        (res: IDatosRegistro) => {
+          console.log('🚀 ~ InfoComponent ~ .subscribe ~ res:', res);
+          if (!res) {
+            this.alertService.alertBasic(
+              'Error',
+              '',
+              'Ha ocurrido un error en los datos',
+              ['Ok']
+            );
+            this.router.navigate([`/${EnumPages.HOME}`]);
+            throw new Error();
+          }
+
+          this.datosRegistro = res;
+        },
+        (err: Error) => {
+          throw new Error();
+        }
+      );
   }
 
   private asignarDatosPantalla(): void {
@@ -163,7 +194,7 @@ export class InfoComponent implements OnInit {
 
   private async consultarApi(): Promise<void> {
     let loading: HTMLIonLoadingElement = await this.alertService.loading(
-      'Mensaje'
+      'Cargando'
     );
     loading.present();
     this.http
@@ -200,7 +231,13 @@ export class InfoComponent implements OnInit {
       pin: this.pin.value,
       confirmarPin: this.confirmarPin.value,
     };
-    console.log('🚀 ~ InfoComponent ~ clickSiguiente ~ data:', data);
+
+    this.datosRegistro = { ...this.datosRegistro, ...data };
+
+    this.obser.setData(
+      EnumVariablesGlobales.DATOS_REGISTRO,
+      this.datosRegistro
+    );
 
     if (!this.validarIgualdadDatos()) return;
 

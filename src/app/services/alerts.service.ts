@@ -36,9 +36,21 @@ export class AlertsService {
     return alert.present();
   }
 
-  public async loading(message: string): Promise<any> {
+  /**
+   *
+   *
+   * @param {string} message
+   * @param {number} [duration=null as any]
+   * @return {*}  {Promise<any>}
+   * @memberof AlertsService
+   */
+  public async loading(
+    message: string,
+    duration: number = null as any
+  ): Promise<any> {
     const loading: HTMLIonLoadingElement = await this.loadingController.create({
       message,
+      duration,
     });
     return loading;
   }
