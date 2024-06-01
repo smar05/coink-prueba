@@ -161,14 +161,20 @@ export class InfoComponent implements OnInit {
     this.obser.setData(EnumVariablesGlobales.URL_IMG_INFO_REGISTRO, 'coink');
   }
 
-  private consultarApi(): void {
+  private async consultarApi(): Promise<void> {
+    let loading: HTMLIonLoadingElement = await this.alertService.loading(
+      'Mensaje'
+    );
+    loading.present();
     this.http
       .get('https://api.bancoink.biz/qa/signup/documentTypes?apiKey=030106')
       .subscribe(
         (res: any) => {
           this.tiposDeDocumento = res;
+          loading.dismiss();
         },
         (error) => {
+          loading.dismiss();
           this.alertService.alertBasic(
             'Error',
             '',
