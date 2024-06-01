@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { EnumVariablesGlobales } from 'src/app/enums/enum-variables-globales';
+import { VariablesGlobalesService } from 'src/app/services/variables-globales.service';
 
 @Component({
   selector: 'app-registro-exitoso',
@@ -7,7 +9,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class RegistroExitosoComponent implements OnInit {
-  constructor() {}
+  constructor(private obser: VariablesGlobalesService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.obser.setData(EnumVariablesGlobales.SHOW_NAVBAR, false);
+  }
 }
