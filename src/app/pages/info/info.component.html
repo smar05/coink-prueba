@@ -1,0 +1,155 @@
+<div class="container my-5">
+  <app-info-registro></app-info-registro>
+
+  <h4 class="title mb-4">Documento de identidad</h4>
+  <form [formGroup]="f" (ngSubmit)="this.clickSiguiente()">
+    <div class="form-floating">
+      <select
+        class="form-control custom-input"
+        id="tipoDocumento"
+        required
+        formControlName="tipoDocumento"
+        [ngClass]="{
+          'is-invalid': this.tipoDocumento.invalid
+        }"
+      >
+        <option disabled selected></option>
+        <option *ngFor="let td of this.tiposDeDocumento" [value]="td.notation">
+          {{ td.description }}
+        </option>
+      </select>
+      <label class="custom-label" for="tipoDocumento">Tipo de documento</label>
+    </div>
+    <div class="form-floating">
+      <input
+        type="text"
+        class="form-control custom-input"
+        id="numeroDocumento"
+        placeholder=""
+        formControlName="numeroDocumento"
+        [ngClass]="{
+          'is-invalid': this.numeroDocumento.invalid
+        }"
+      />
+      <label class="custom-label" for="numeroDocumento"
+        >Número de documento</label
+      >
+    </div>
+    <div class="form-floating">
+      <input
+        type="date"
+        class="form-control custom-input"
+        id="fechaExpedicion"
+        placeholder=""
+        formControlName="fechaExpedicion"
+        [ngClass]="{
+          'is-invalid': this.fechaExpedicion.invalid
+        }"
+      />
+      <label class="custom-label" for="fechaExpedicion"
+        >Fecha de expedicion del documento</label
+      >
+    </div>
+    <div class="form-floating">
+      <input
+        type="date"
+        class="form-control custom-input"
+        id="fechaNacimiento"
+        placeholder=""
+        formControlName="fechaNacimiento"
+        [ngClass]="{
+          'is-invalid': this.fechaNacimiento.invalid
+        }"
+      />
+      <label class="custom-label" for="fechaNacimiento"
+        >Fecha de nacimiento</label
+      >
+    </div>
+    <div class="form-floating">
+      <select
+        class="form-control custom-input"
+        id="genero"
+        formControlName="genero"
+        [ngClass]="{
+          'is-invalid': genero.invalid
+        }"
+      >
+        <option disabled selected></option>
+        <option>Masculino</option>
+        <option>Femenino</option>
+        <option>Otro</option>
+      </select>
+      <label class="custom-label" for="genero">Genero</label>
+    </div>
+
+    <h4 class="title mb-2 mt-4">Configura tu cuenta</h4>
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control custom-input"
+        id="correoElectronico"
+        placeholder=""
+        formControlName="correoElectronico"
+        [ngClass]="{
+          'is-invalid': this.correoElectronico.invalid
+        }"
+      />
+      <label class="custom-label" for="correoElectronico"
+        >Correo electrónico</label
+      >
+    </div>
+    <div class="form-floating">
+      <input
+        type="email"
+        class="form-control custom-input"
+        id="confirmarCorreo"
+        placeholder=""
+        formControlName="confirmarCorreo"
+        [ngClass]="{
+          'is-invalid': this.confirmarCorreo.invalid
+        }"
+      />
+      <label class="custom-label" for="confirmarCorreo"
+        >Confirmar correo electrónico</label
+      >
+    </div>
+
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control custom-input"
+        id="pin"
+        placeholder=""
+        formControlName="pin"
+        [ngClass]="{
+          'is-invalid': pin.invalid
+        }"
+      />
+      <label class="custom-label" for="pin">Pin de seguridad</label>
+    </div>
+
+    <div class="form-floating">
+      <input
+        type="password"
+        class="form-control custom-input"
+        id="confirmarPin"
+        placeholder=""
+        formControlName="confirmarPin"
+        [ngClass]="{
+          'is-invalid': confirmarPin.invalid
+        }"
+      />
+      <label class="custom-label" for="confirmarPin"
+        >Confirmar pin de seguridad</label
+      >
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-lg btn-block my-3 btn-siguiente"
+      [disabled]="this.f.invalid || !this.validarIgualdadDatos()"
+    >
+      SIGUIENTE
+    </button>
+  </form>
+</div>
