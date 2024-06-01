@@ -7,6 +7,8 @@ import {
 import { Router } from '@angular/router';
 import { EnumPages } from 'src/app/enums/enum-pages';
 import { EnumVariablesGlobales } from 'src/app/enums/enum-variables-globales';
+import { IDatosRegistro } from 'src/app/interfaces/i-datos-registro';
+import { AlertsService } from 'src/app/services/alerts.service';
 import { VariablesGlobalesService } from 'src/app/services/variables-globales.service';
 
 @Component({
@@ -39,7 +41,8 @@ export class NumeroCelComponent implements OnInit {
   constructor(
     private obser: VariablesGlobalesService,
     private form: UntypedFormBuilder,
-    private router: Router
+    private router: Router,
+    private alertsService: AlertsService
   ) {}
 
   ngOnInit() {
@@ -57,7 +60,7 @@ export class NumeroCelComponent implements OnInit {
     let numero: string = this.celphone.value;
 
     if (tecla === 'check') {
-      if (this.f.valid) this.router.navigate([`/${EnumPages.INFO}`]);
+      this.continuar();
     } else if (tecla === 'delete') {
       if (numero.length === 0) return;
       numero = numero.slice(0, -1);
@@ -68,5 +71,20 @@ export class NumeroCelComponent implements OnInit {
     }
 
     this.f.controls['celphone'].setValue(numero);
+  }
+
+  private async continuar(): Promise<void> {
+    if (this.f.invalid) {
+      this.alertsService.alertBasic('Error', '', 'Datos invalidos', ['Ok']);
+      return;
+    }
+
+    let datosRegistro: IDatosRegistro = {
+      numeroCelular: this.celphone.value,
+    } as any;
+
+    this.obser.setData(EnumVariablesGlobales.DATOS_REGISTRO, datosRegistro);
+
+    this.router.navigate([`/${EnumPages.INFO}`]);
   }
 }

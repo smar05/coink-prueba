@@ -4,4 +4,5 @@ export enum EnumVariablesGlobales {
   TEXTO_INFO_REGISTRO = 'texto_info_registro',
   TITLE_INFO_REGISTRO = 'title_info_regsitro',
   URL_IMG_INFO_REGISTRO = 'url_img_info_registro',
+  DATOS_REGISTRO = 'datos_registro',
 }
