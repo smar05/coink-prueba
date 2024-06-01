@@ -106,12 +106,24 @@
         placeholder=""
         formControlName="confirmarCorreo"
         [ngClass]="{
-          'is-invalid': this.confirmarCorreo.invalid
+          'is-invalid':
+            this.confirmarCorreo.invalid ||
+            this.f.controls['correoElectronico'].value !=
+              this.f.controls['confirmarCorreo'].value
         }"
       />
       <label class="custom-label" for="confirmarCorreo"
         >Confirmar correo electrónico</label
       >
+      <span
+        class="invalid-feedback"
+        *ngIf="
+          this.f.controls['correoElectronico'].value !=
+          this.f.controls['confirmarCorreo'].value
+        "
+      >
+        El correo no coincide
+      </span>
     </div>
 
     <div class="form-floating">
@@ -136,12 +148,23 @@
         placeholder=""
         formControlName="confirmarPin"
         [ngClass]="{
-          'is-invalid': confirmarPin.invalid
+          'is-invalid':
+            confirmarPin.invalid ||
+            this.f.controls['pin'].value !=
+              this.f.controls['confirmarPin'].value
         }"
       />
       <label class="custom-label" for="confirmarPin"
         >Confirmar pin de seguridad</label
       >
+      <span
+        class="invalid-feedback"
+        *ngIf="
+          this.f.controls['pin'].value != this.f.controls['confirmarPin'].value
+        "
+      >
+        El pin no coincide
+      </span>
     </div>
 
     <button
